@@ -75,10 +75,10 @@
                             
                                 <label>Tags</label>
                                 
-                                   <p>
+                               
                
                                     <input type="hidden" name="tags" id="mySingleField" value="Apple, Orange" disabled="true"> <!-- only disabled for demonstration purposes -->
-                                   </p>
+                                   
                         <ul id="singleFieldTags"></ul>
                              
                                 
