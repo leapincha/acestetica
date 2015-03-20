@@ -1,8 +1,45 @@
+<script type="text/javascript">
 
+    $().ready(function() {
+        $("#frmData").validate({
+            messages: {
+                categoria: "Requerida",
+                titulo: "Requerido",
+                descripcion: "Requerido",
+                localidad: "Requerida",
+                general_disponibles: "Requerida",
+                numeradas_disponibles: "Requerida",
+                general_precio: "Requerido",
+                numeradas_precio: "Requerido",
+                artista: "Requerido"
+            }
+        });
 
+        $('#frmData').submit(function() {
+            if($(this).valid())
+            {
+                return true;
+            }
+
+            return false;
+        });
+    });
+
+    $(function() {
+        $( "#fecha" ).datepicker({
+            dateFormat: 'dd/mm/yy'
+        });
+    });
+
+     
+   
+</script>
 
 
 <div id="main-content"> <!-- Main Content Section with everything -->
+
+
+    
 
     <div class="content-box"><!-- Start Content Box -->
 
@@ -27,6 +64,20 @@
 			</div>
                         <?php endif; ?>
                         
+                        <p>
+                            <label>Tipo de Nota*</label>
+                            <select id="tipo_nota" name="tipo_nota" class="text-input required" onchange="get_imagen(this.value)">
+                            <option value="">Seleccionar Tipo de nota</option>
+                            <?php foreach ($tipo_nota as $tipo): ?>
+                                <option value="<?= $tipo->id_nota ?>"><?= $tipo->nota ?></option>
+                            <?php endforeach ?>
+                            </select>
+                            <div id="img_nota" style="display:none">
+                            <a id="efecto4" rel="gallery1" title="Nota con 1 imagen" id="imagen_nota">
+                                <img id="nota">
+                            </a>
+                            </div>
+                        </p>
                         <p>
                             <label>Título*</label>
                             <input class="text-input small-input required" id="titulo" name="titulo" />
@@ -80,6 +131,12 @@
                                     <input type="hidden" name="tags" id="mySingleField" value="Apple, Orange" disabled="true"> <!-- only disabled for demonstration purposes -->
                                    
                         <ul id="singleFieldTags"></ul>
+
+                        <ul id="myTags">
+    <!-- Existing list items will be pre-added to the tags -->
+                        <li>Tag1</li>
+                        
+                        </ul>
                              
                                 
                             
@@ -87,9 +144,12 @@
                         
                         <p>
                             <label>Video URL(Vimeo/Youtube)</label>
-                            <input class="text-input small-input required" id="general_precio" name="general_precio" />
+                            <input class="text-input small-input required" id="url_video" name="url_video" />
                         </p>
-                        
+                        <p>
+                            <label>Fecha</label>
+                            <input class="text-input required" id="fecha" name="fecha" readonly />
+                        </p>
                         
                         <p>
                             <input class="button" type="submit" value="Guardar" />
@@ -104,7 +164,3 @@
         </div> <!-- End .content-box-content -->
 
     </div> 
-
-
-
-    
